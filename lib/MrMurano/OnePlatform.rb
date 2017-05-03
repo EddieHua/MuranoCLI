@@ -29,6 +29,30 @@ module MrMurano
       end
     end
 
+    class Settings < ::MrMurano::ServiceConfig
+      def initialize
+        super
+        @serviceName = 'device'
+      end
+
+      def triggers
+        details = fetch(scid)
+
+        return [] if details[:triggers].nil?
+        details[:triggers][:pid]
+      end
+
+      def triggers=(products)
+        details = fetch(scid)
+        products = [products] unless products.kind_of? Array
+        details[:triggers] = {:pid=>products}
+        details[:parameters] = {:pid=>products}
+
+        put('/'+scid, details)
+      end
+
+    end
+
     module ProductOnePlatformRpcShim
       ## The model RID for this product.
       def model_rid
