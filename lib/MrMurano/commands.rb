@@ -18,6 +18,8 @@ require 'MrMurano/commands/usage'
 
 # XXX: If this route, then 1p_legacy *HAS* to be in the Config files. (not on
 # cmdline)
+# Otherwise use an ENV var i suppose.
+#if not ENV['1P_Legacy'].nil? then
 if $cfg['tool.1p_legacy'] then
   require 'MrMurano/commands/cors' # future is only setting subcommand
   require 'MrMurano/commands/content-1p'
