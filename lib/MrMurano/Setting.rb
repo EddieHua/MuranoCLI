@@ -5,8 +5,20 @@ module MrMurano
   class Setting
     include Verbose
 
+    def initialize
+      @services_with_settings = ::MrMurano.constants.map do |maybe|
+        begin
+          Object::const_get("MrMurano::#{maybe}::Settings")
+          maybe
+        rescue
+          nil
+        end
+      end.compact
+    end
+
     SERVICE_MAP = {
       'Device2' => 'Gateway',
+      '1P' => 'OnePlatform',
     }.freeze
 
     ## Map service names into actual class names.
@@ -23,6 +35,11 @@ module MrMurano
           return v
         end
       end
+
+      @services_with_settings.each do |v|
+        return v.to_s if v.to_s.downcase == service
+      end
+
       return service.sub(/(.)(.*)/){"#{$1.upcase}#{$2.downcase}"}
     end
 
@@ -77,7 +94,7 @@ module MrMurano
     # settings command.
     def list
       result = {}
-      ::MrMurano.constants.each do |maybe|
+      @services_with_settings.each do |maybe|
         begin
           gb = Object::const_get("MrMurano::#{maybe}::Settings")
           result[maybe] = gb.instance_methods(false).select{|i| i.to_s[-1] != '='}
