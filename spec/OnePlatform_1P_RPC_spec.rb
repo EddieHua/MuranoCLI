@@ -1,6 +1,6 @@
 require 'MrMurano/version'
 require 'MrMurano/Config'
-require 'MrMurano/Product-Resources'
+require 'MrMurano/OnePlatform-Resources'
 require '_workspace'
 
 RSpec.describe MrMurano::OnePlatform::Resources, "#1PshimTests" do

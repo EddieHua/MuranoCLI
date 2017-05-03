@@ -1,6 +1,6 @@
 require 'MrMurano/version'
 require 'MrMurano/Config'
-require 'MrMurano/Product'
+require 'MrMurano/OnePlatform'
 require '_workspace'
 
 RSpec.describe MrMurano::OnePlatform::Content, "#product_content" do

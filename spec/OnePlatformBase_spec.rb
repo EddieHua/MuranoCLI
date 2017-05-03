@@ -1,5 +1,5 @@
 require 'MrMurano/version'
-require 'MrMurano/Product'
+require 'MrMurano/OnePlatform'
 require '_workspace'
 
 RSpec.describe MrMurano::OnePlatform::Base, "#product_base" do

@@ -1,6 +1,6 @@
 require 'MrMurano/version'
 require 'MrMurano/Config'
-require 'MrMurano/Product-1P-Device'
+require 'MrMurano/OnePlatform-1P-Device'
 require '_workspace'
 
 RSpec.describe MrMurano::OnePlatform::Device, '#sn_rid tests' do

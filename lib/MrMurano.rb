@@ -25,8 +25,8 @@ require 'MrMurano/Gateway'
 require 'MrMurano/Content'
 
 # Okami replaces
-require 'MrMurano/Product'
-require 'MrMurano/Product-1P-Device'
-require 'MrMurano/Product-Resources'
+require 'MrMurano/OnePlatform'
+require 'MrMurano/OnePlatform-1P-Device'
+require 'MrMurano/OnePlatform-Resources'
 
 require 'MrMurano/commands'
