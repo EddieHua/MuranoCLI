@@ -3,7 +3,7 @@ require 'MrMurano/Config'
 require 'MrMurano/Product-Resources'
 require '_workspace'
 
-RSpec.describe MrMurano::ProductResources, "#1PshimTests" do
+RSpec.describe MrMurano::OnePlatform::Resources, "#1PshimTests" do
   include_context "WORKSPACE"
   before(:example) do
     $cfg = MrMurano::Config.new
@@ -12,7 +12,7 @@ RSpec.describe MrMurano::ProductResources, "#1PshimTests" do
     $cfg['product.id'] = 'XYZ'
     $cfg['product.spec'] = 'XYZ.yaml'
 
-    @prd = MrMurano::ProductResources.new
+    @prd = MrMurano::OnePlatform::Resources.new
     allow(@prd).to receive(:token).and_return("TTTTTTTTTT")
     allow(@prd).to receive(:model_rid).and_return("LLLLLLLLLL")
   end

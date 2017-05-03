@@ -2,7 +2,7 @@ require 'MrMurano/version'
 require 'MrMurano/Product'
 require '_workspace'
 
-RSpec.describe MrMurano::ProductBase, "#product_base" do
+RSpec.describe MrMurano::OnePlatform::Base, "#product_base" do
   include_context "WORKSPACE"
   before(:example) do
     $cfg = MrMurano::Config.new
@@ -12,7 +12,7 @@ RSpec.describe MrMurano::ProductBase, "#product_base" do
     $cfg['net.host'] = 'bizapi.hosted.exosite.io'
     $cfg['product.id'] = 'XYZ'
 
-    @prd = MrMurano::ProductBase.new
+    @prd = MrMurano::OnePlatform::Base.new
     allow(@prd).to receive(:token).and_return("TTTTTTTTTT")
   end
 

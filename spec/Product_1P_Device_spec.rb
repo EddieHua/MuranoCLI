@@ -3,7 +3,7 @@ require 'MrMurano/Config'
 require 'MrMurano/Product-1P-Device'
 require '_workspace'
 
-RSpec.describe MrMurano::Product1PDevice, '#sn_rid tests' do
+RSpec.describe MrMurano::OnePlatform::Device, '#sn_rid tests' do
   include_context "WORKSPACE"
   before(:example) do
     $cfg = MrMurano::Config.new
@@ -14,10 +14,10 @@ RSpec.describe MrMurano::Product1PDevice, '#sn_rid tests' do
     $cfg['product.id'] = 'XYZ'
     $cfg['product.spec'] = 'XYZ.yaml'
 
-    @prd = MrMurano::Product1PDevice.new
+    @prd = MrMurano::OnePlatform::Device.new
     allow(@prd).to receive(:token).and_return("TTTTTTTTTT")
     @mrp = instance_double("MrMurano::Product")
-    allow(MrMurano::Product).to receive(:new).and_return(@mrp)
+    allow(MrMurano::OnePlatform::Product).to receive(:new).and_return(@mrp)
   end
 
   it "gets rid from sn" do
@@ -65,7 +65,7 @@ RSpec.describe MrMurano::Product1PDevice, '#sn_rid tests' do
   end
 end
 
-RSpec.describe MrMurano::Product1PDevice do
+RSpec.describe MrMurano::OnePlatform::Device do
   include_context "WORKSPACE"
   before(:example) do
     $cfg = MrMurano::Config.new
@@ -76,7 +76,7 @@ RSpec.describe MrMurano::Product1PDevice do
     $cfg['product.id'] = 'XYZ'
     $cfg['product.spec'] = 'XYZ.yaml'
 
-    @prd = MrMurano::Product1PDevice.new
+    @prd = MrMurano::OnePlatform::Device.new
     allow(@prd).to receive(:token).and_return("TTTTTTTTTT")
     allow(@prd).to receive(:sn_rid).and_return("LLLLLLLLLL")
   end
