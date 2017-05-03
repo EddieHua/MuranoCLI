@@ -29,4 +29,4 @@ require 'MrMurano/OnePlatform'
 require 'MrMurano/OnePlatform-1P-Device'
 require 'MrMurano/OnePlatform-Resources'
 
-require 'MrMurano/commands'
+#require 'MrMurano/commands'

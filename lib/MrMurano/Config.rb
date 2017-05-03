@@ -110,6 +110,7 @@ module MrMurano
       set('tool.dry', false, :defaults)
       set('tool.fullerror', false, :defaults)
       set('tool.outformat', 'best', :defaults)
+      set('tool.1p_legacy', false, :defaults)
 
       set('net.host', 'bizapi.hosted.exosite.io', :defaults)
 

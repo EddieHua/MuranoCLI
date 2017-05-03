@@ -55,6 +55,7 @@ $project.load
 # - TODO: Introspection for tab completion.
 # - TODO: Look for tools in PATH that are +x and "mr-foo..."
 
+require 'MrMurano/commands'
 
 # Look for plug-ins
 pgds = [
