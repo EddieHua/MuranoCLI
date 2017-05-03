@@ -214,7 +214,7 @@ RSpec.describe MrMurano::OnePlatform::Resources do
     before(:example) do
       # pull over test file.
       FileUtils.mkpath(File.dirname($cfg['location.resources']))
-      lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb.yaml').realpath
+      lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb-1p.yaml').realpath
       @spec_path = $cfg['location.resources']
       FileUtils.copy(lb.to_path, @spec_path)
     end
@@ -257,7 +257,7 @@ RSpec.describe MrMurano::OnePlatform::Resources do
   context "downloads" do
     before(:example) do
       FileUtils.mkpath(File.dirname($cfg['location.resources']))
-      @lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb.yaml').realpath
+      @lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb-1p.yaml').realpath
       @spec_path = Pathname.new($cfg['location.resources'])
     end
 
@@ -307,7 +307,7 @@ RSpec.describe MrMurano::OnePlatform::Resources do
     before(:example) do
       # pull over test file.
       FileUtils.mkpath(File.dirname($cfg['location.resources']))
-      @lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb.yaml').realpath
+      @lb = (@testdir + 'spec/fixtures/product_spec_files/lightbulb-1p.yaml').realpath
       @spec_path = $cfg['location.resources']
       FileUtils.copy(@lb.to_path, @spec_path)
       @spec_path = Pathname.new(@spec_path)

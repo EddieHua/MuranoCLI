@@ -1,0 +1,14 @@
+---
+resources:
+- alias: state
+  format: integer
+  initial: 0
+- alias: temperature
+  format: float
+  initial: 0
+- alias: uptime
+  format: integer
+  initial: 0
+- alias: humidity
+  format: float
+  initial: 0
