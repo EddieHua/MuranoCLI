@@ -18,9 +18,15 @@ require 'MrMurano/Webservice-File' # service/{pid}/webservice/
 
 require 'MrMurano/Solution-Users' # service/{pid}/user/
 
+require 'MrMurano/Setting'
+require 'MrMurano/ReCommander'
+
 require 'MrMurano/Gateway'
 require 'MrMurano/Content'
 
-require 'MrMurano/Setting'
-require 'MrMurano/ReCommander'
+# Okami replaces
+require 'MrMurano/Product'
+require 'MrMurano/Product-1P-Device'
+require 'MrMurano/Product-Resources'
+
 require 'MrMurano/commands'
