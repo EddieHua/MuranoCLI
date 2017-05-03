@@ -1,4 +1,4 @@
-require 'MrMurano/Product'
+require 'MrMurano/OnePlatform'
 require 'MrMurano/SyncUpDown'
 
 module MrMurano

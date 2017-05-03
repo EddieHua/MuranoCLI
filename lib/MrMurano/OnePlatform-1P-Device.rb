@@ -1,4 +1,4 @@
-require 'MrMurano/Product'
+require 'MrMurano/OnePlatform'
 
 module MrMurano
   module OnePlatform
