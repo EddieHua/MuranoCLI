@@ -4,6 +4,7 @@ require 'csv'
 require 'pp'
 require 'MrMurano/http'
 require 'MrMurano/verbosing'
+require 'MrMurano/Solution-ServiceConfig'
 
 module MrMurano
   module OnePlatform

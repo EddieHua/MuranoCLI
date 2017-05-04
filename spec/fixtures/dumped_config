@@ -4,6 +4,7 @@ debug = false
 dry = false
 fullerror = false
 outformat = best
+1p_legacy = false
 
 [net]
 host = bizapi.hosted.exosite.io
