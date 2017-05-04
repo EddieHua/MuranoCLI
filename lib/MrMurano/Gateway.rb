@@ -13,6 +13,7 @@ module MrMurano
   module Gateway
     class Base
       def initialize
+        # XXX: MRMUR-94
         @pid = $cfg['project.id']
         raise "No project id!" if @pid.nil?
         @uriparts = [:service, @pid, :device2]

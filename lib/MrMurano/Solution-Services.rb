@@ -51,11 +51,16 @@ module MrMurano
       script = local.read
 
       pst = remote.to_h.merge ({
-        :solution_id => $cfg['project.id'],
         :script => script,
         :alias=>mkalias(remote),
         :name=>mkname(remote),
       })
+      # XXX: MRMUR-94
+      if $cfg['tool.1p_legacy'] then
+        pst[:solution_id] = $cfg['solution.id']
+      else
+        pst[:solution_id] = $cfg['project.id']
+      end
       debug "f: #{local} >> #{pst.reject{|k,_| k==:script}.to_json}"
       # try put, if 404, then post.
       put('/'+mkalias(remote), pst) do |request, http|
@@ -175,6 +180,7 @@ module MrMurano
 
     def mkalias(remote)
       unless remote.name.nil? then
+        # XXX: MRMUR-94
         [$cfg['project.id'], remote[:name]].join('_')
       else
         raise "Missing parts! #{remote.to_h.to_json}"
@@ -236,6 +242,7 @@ module MrMurano
       if remote.service.nil? or remote.event.nil? then
         raise "Missing parts! #{remote.to_h.to_json}"
       else
+        # XXX: MRMUR-94
         [$cfg['project.id'], remote[:service], remote[:event]].join('_')
       end
     end
