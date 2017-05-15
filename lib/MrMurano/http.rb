@@ -1,3 +1,4 @@
+require 'date'
 require 'uri'
 require 'net/http'
 require 'json'
@@ -43,7 +44,25 @@ module MrMurano
             a << %{-d '#{request.body}'}
           end
         end
-        puts a.join(' ')
+        unless defined?(@@curlfile)
+          puts a.join(' ')
+        else
+          @@curlfile << a.join(' ') + "\n\n"
+          @@curlfile.flush
+          # MEH: Call @@curlfile.close() at some point?
+        end
+      end
+    end
+
+    ## Open a file for capturing curl calls.
+    # Start with the current time and config.
+    def self.initCurlfile
+      if $cfg['tool.curldebug'] and $cfg['tool.curlfile'] then
+        unless defined?(@@curlfile)
+          @@curlfile = File.open($cfg['tool.curlfile'], 'a')
+          @@curlfile << Time.now << "\n"
+          @@curlfile << "murano #{ARGV.join(' ')}\n"
+        end
       end
     end
 

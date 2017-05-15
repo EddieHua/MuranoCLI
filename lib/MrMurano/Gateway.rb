@@ -8,8 +8,8 @@ require 'MrMurano/verbosing'
 require 'MrMurano/SyncUpDown'
 
 module MrMurano
-  ## The details of talking to the Gateway service.
-  # This where interfacing to real hardware happens.
+  ## The details of talking to the Gateway [Device2] service.
+  # This is where interfacing to real hardware happens.
   module Gateway
     class Base
       def initialize
@@ -286,7 +286,7 @@ module MrMurano
         uri = endPoint()
         @uriparts = uriparts
 
-        file = HTTP::FormData::File.new(local.to_s, {:mime_type=>'text/csv'})
+        file = HTTP::FormData::File.new(local.to_s, {:content_type=>'text/csv'})
         form = HTTP::FormData.create(:identities=>file)
         req = Net::HTTP::Post.new(uri)
         set_def_headers(req)
@@ -340,9 +340,8 @@ module MrMurano
       # @param identifier [String] The identifier for the device to write.
       # @param values [Hash] Aliases and the values to write.
       def write(identifier, values)
-        wvalues = Hash[ values.map{|k,v| [k, {:set=>v}]} ]
-        debug "Will Write: #{wvalues}"
-        put("/#{identifier}/state", wvalues)
+        debug "Will Write: #{values}"
+        patch("/#{identifier}/state", values)
       end
 
       # Read the current state for a device

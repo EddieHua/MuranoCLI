@@ -307,6 +307,7 @@ end
         ret = @srv.toRemoteItem(nil, tio.path)
         expect(ret).to eq({:service=>'device',
                            :event=>'datapoint',
+                           :type=>nil,
                            :line=>0,
                            :line_end=>3,
                            :local_path=>Pathname.new(tio.path),
@@ -342,6 +343,7 @@ end
           MrMurano::EventHandler::EventHandlerItem.new(
             :service=>'device',
             :event=>'datapoint',
+            :type=>nil,
             :line=>1,
             :line_end=>3,
             :local_path=>Pathname.new(tio.path),

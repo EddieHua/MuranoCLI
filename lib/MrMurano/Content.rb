@@ -83,7 +83,7 @@ module MrMurano
 
         uri = URI(ret[:url])
         request = Net::HTTP::Post.new(uri)
-        file = HTTP::FormData::File.new(local_path.to_s, {:mime_type=>mime})
+        file = HTTP::FormData::File.new(local_path.to_s, {:content_type=>mime})
         form = HTTP::FormData.create(ret[:inputs].merge({ret[:field]=>file}))
 
         request['User-Agent'] = "MrMurano/#{MrMurano::VERSION}"

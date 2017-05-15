@@ -113,16 +113,16 @@ All of these can be toggled with command line options.
 
 ### CORS
 
-If you are developing you UI on seperate services and you need cross-origin
+If you are developing you UI on separate services and you need cross-origin
 resource sharing, you will need to set the
 [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) options.
 
 The current CORS options can be fetched with `murano cors`
 
-There are three opitons for setting, the first and preferred way is to put your CORS
-opitons into a file named `cors.yaml`.
+There are three options for setting, the first and preferred way is to put your CORS
+options into a file named `cors.yaml`.
 
-Second and third are to put the CORS opitons in your project file.  In the `routes`
+Second and third are to put the CORS options in your project file.  In the `routes`
 section, add a `cors` sub-section with either the name of the file to read, or the
 CORS options inline.
 
@@ -148,13 +148,13 @@ and path.  You set this with the following line:
 ```
 
 Optionally, you can set what the expected content type is too. (If you don't set
-this, the value is application/json)
+this, the value is `application/json`)
 
 ```lua
 --#ENDPOINT METHOD PATH CONTENT_TYPE
 ```
 
-An example of a route that puts csv data:
+An example of a route that puts CSV data:
 ```lua
 --#ENDPOINT PUT /api/upload text/csv
 ```
@@ -203,8 +203,8 @@ Tsdb.write{
 ### MURANO_CONFIGFILE environment and Dotenv
 
 The environment variable `MURANO_CONFIGFILE` is checked for an additional config to
-load.  This in conjunction with dotenv support, allows for easily switching between
-development, staging, and production setups.
+load.  This, in conjunction with [dotenv](https://github.com/bkeepers/dotenv) support,
+allows for easily switching between development, staging, and production setups.
 
 To use this, write the three solution ids into `.murano.dev`, `.murano.stg`,
 and `.murano.prod`. Then write the `.env` file to point at the system you're
@@ -296,10 +296,8 @@ tests work with the live Murano servers (`--tag needs_password`).
 
 To use the live tests, the following environment variables need to be set:
 - `MURANO_CONFIGFILE` : A Config with the user.name, business.id, and net.host for
-  the intergration tests.
+  the integration tests.
 - `MURANO_PASSWORD` : Password for the user.name above.
 
 A free account on Murano is sufficient for these tests.
-
-
 

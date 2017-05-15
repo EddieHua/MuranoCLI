@@ -114,8 +114,10 @@ module MrMurano
       attr_accessor :diff
       # @return [Boolean] When filtering, did this item pass.
       attr_accessor :selected
-      # ???? what is this?
+      # FIXME/EXPLAIN: ???? what is this?
       attr_accessor :synckey
+      # @return [String] For device2, the event type
+      attr_accessor :type
 
       # Initialize a new Item with a few, or all, attributes.
       # @param hsh [Hash{Symbol=>Object}, Item] Initial values

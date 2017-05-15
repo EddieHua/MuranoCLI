@@ -221,7 +221,7 @@ module MrMurano
       @paths.insert(1, spc)
     end
 
-    ## Get a value for key, looking at the specificed scopes
+    ## Get a value for key, looking at the specified scopes
     # key is <section>.<key>
     def get(key, scope=CFG_SCOPES)
       scope = [scope] unless scope.kind_of? Array

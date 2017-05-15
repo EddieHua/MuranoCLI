@@ -61,7 +61,7 @@ RSpec.describe 'murano syncdown', :cmd, :needs_password do
                            "routes/api-fire.post.lua",
                            "routes/api-onfire.get.lua",
                            "services",
-                           "services/gateway_data_in.lua",
+                           "services/device2_event.lua",
                            "services/timer_timer.lua")
     end
   end

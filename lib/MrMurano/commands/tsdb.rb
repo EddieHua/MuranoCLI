@@ -86,7 +86,7 @@ command 'tsdb query' do |c|
   c.summary = %{query data}
   c.description =%{Query data from the TSDB.
 
-FUNCS is a comma seperated list of the aggregate functions.
+FUNCS is a comma separated list of the aggregate functions.
 Currently: avg, min, max, count, sum.  For string metrics, only count.
 
 FILL is null, none, any integer, previous

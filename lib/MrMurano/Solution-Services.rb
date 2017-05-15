@@ -50,10 +50,10 @@ module MrMurano
       # we assume these are small enough to slurp.
       script = local.read
 
-      pst = remote.to_h.merge ({
+      pst = remote.to_h.merge({
         :script => script,
-        :alias=>mkalias(remote),
-        :name=>mkname(remote),
+        :alias => mkalias(remote),
+        :name => mkname(remote),
       })
       # XXX: MRMUR-94
       if $cfg['tool.1p_legacy'] then
@@ -228,6 +228,8 @@ module MrMurano
       attr_accessor :service
       # @return [String] Which event triggers this script
       attr_accessor :event
+      # @return [String] For device2 events, the type of event
+      attr_accessor :type
     end
 
     def initialize
@@ -257,7 +259,7 @@ module MrMurano
 
     def list
       ret = get()
-      # eventhandler.skiplist is a list of whitespace seperated dot-paired values.
+      # eventhandler.skiplist is a list of whitespace separated dot-paired values.
       # fe: service.event service service service.event
       skiplist = ($cfg['eventhandler.skiplist'] or '').split
       ret[:items].reject { |i|
@@ -301,9 +303,18 @@ module MrMurano
       path.readlines().each do |line|
         md = @match_header.match(line)
         if not md.nil? then
+          # [lb] asks: Is this too hacky?
+          if md[:service] == 'device2' then
+            event_event = 'event'
+            event_type = md[:event]
+          else
+            event_event = md[:event]
+            event_type = nil
+          end
           # header line.
           cur = EventHandlerItem.new(:service=>md[:service],
-                                     :event=>md[:event],
+                                     :event=>event_event,
+                                     :type=>event_type,
                                      :local_path=>path,
                                      :line=>lineno,
                                      :script=>line)
@@ -325,6 +336,7 @@ module MrMurano
           warning "Please add the header \"--#EVENT #{service} #{event}\""
           cur = EventHandlerItem.new(:service=>service,
                                      :event=>event,
+                                     :type=>nil,
                                      :local_path=>path,
                                      :line=>0,
                                      :line_end => lineno,

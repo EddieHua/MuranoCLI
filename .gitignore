@@ -30,3 +30,18 @@ test.*
 .Trashes
 
 Gemfile.lock
+
+# For "Debugging in Ruby 2"
+#   https://github.com/deivid-rodriguez/byebug
+.byebug_history
+
+# For `chruby` and `rvm` Ruby versioning
+#   .ruby-version
+.ruby-version
+.bundle/
+
+# For `rake test` using a test .murano config
+.murano.test
+
+.rake_tasks~
+

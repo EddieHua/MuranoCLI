@@ -69,7 +69,6 @@ command 'solution delete' do |c|
     end
     name = args[0]
 
-
     # Need to convert what we got into the internal PID.
     ret = acc.solutions(:all).select{|i| i.has_value?(name) or i[:domain] =~ /#{name}\./ }
 
@@ -106,7 +105,7 @@ command 'solution list' do |c|
     acc = MrMurano::Account.new
     data = acc.solutions(options.type)
 
-    io=nil
+    io = nil
     if options.output then
       io = File.open(options.output, 'w')
     end
@@ -135,8 +134,8 @@ command 'solution list' do |c|
     io.close unless io.nil?
   end
 end
-alias_command 'product list', 'solution list','--type','product', '--no-all'
-alias_command 'project list', 'solution list','--type','product', '--no-all'
-alias_command 'app list', 'solution list','--type','application', '--no-all'
+alias_command 'product list', 'solution list', '--type', 'product', '--no-all'
+alias_command 'project list', 'solution list', '--type', 'product', '--no-all'
+alias_command 'app list', 'solution list', '--type', 'application', '--no-all'
 
 #  vim: set ai et sw=2 ts=2 :
