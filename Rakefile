@@ -31,7 +31,7 @@ gvim lib/MrMurano/version.rb
 git commit -a -m 'version bump'
 git flow release finish <newversion>
 # When editing message for tag, add release notes.
-rake git:all
+#rake git:all
 # Wait for all tests to complete.
 # if all passed: rake gemit
 EOR
@@ -71,24 +71,24 @@ end
 
 ###
 # When new tags are pushed to upstream, the CI will kick-in and build the release
-namespace :git do
-    desc "Push only develop, master, and tags to origin"
-    task :origin do
-        sh %{git push origin develop}
-        sh %{git push origin master}
-        sh %{git push origin --tags}
-    end
-
-    desc "Push only develop, master, and tags to upstream"
-    task :upstream do
-        sh %{git push upstream develop}
-        sh %{git push upstream master}
-        sh %{git push upstream --tags}
-    end
-
-    desc "Push to origin and upstream"
-    task :all => [:origin, :upstream]
-end
+#namespace :git do
+#    desc "Push only develop, master, and tags to origin"
+#    task :origin do
+#        sh %{git push origin develop}
+#        sh %{git push origin master}
+#        sh %{git push origin --tags}
+#    end
+#
+#    desc "Push only develop, master, and tags to upstream"
+#    task :upstream do
+#        sh %{git push upstream develop}
+#        sh %{git push upstream master}
+#        sh %{git push upstream --tags}
+#    end
+#
+#    desc "Push to origin and upstream"
+#    task :all => [:origin, :upstream]
+#end
 
 desc "Build, install locally, and push gem"
 task :gemit do

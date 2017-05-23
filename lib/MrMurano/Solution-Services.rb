@@ -191,7 +191,7 @@ module MrMurano
 
     def list
       ret = get()
-      return [] unless ret.has_key? :items
+      return [] if ret.is_a? Hash and ret.has_key? :error
       ret[:items].map{|i| LibraryItem.new(i)}
     end
 
@@ -250,6 +250,7 @@ module MrMurano
 
     def list
       ret = get()
+      return [] if ret.is_a? Hash and ret.has_key? :error
       # eventhandler.skiplist is a list of whitespace seperated dot-paired values.
       # fe: service.event service service service.event
       skiplist = ($cfg['eventhandler.skiplist'] or '').split

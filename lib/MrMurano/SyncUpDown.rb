@@ -658,7 +658,7 @@ module MrMurano
 
     ## Get status of things here verses there
     #
-    # @param options [Hash, Commander::Command::Options] Options on opertation
+    # @param options [Hash, Commander::Command::Options] Options on operation
     # @param selected [Array<String>] Filters for _matcher
     # @return [Hash{Symbol=>Array<Item>}] Items grouped by the action that should be taken
     def status(options={}, selected=[])
@@ -694,7 +694,7 @@ module MrMurano
         mrg = herebox[key].reject{|k,v| k==itemkey}
         mrg = therebox[key].merge(mrg)
         if docmp(herebox[key], therebox[key]) then
-          mrg[:diff] = dodiff(mrg) if options[:diff] and mrg[:selected]
+          mrg[:diff] = dodiff(mrg.to_h) if options[:diff] and mrg[:selected]
           tomod << mrg
         else
           unchg << mrg

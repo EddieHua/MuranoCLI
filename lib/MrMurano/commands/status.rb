@@ -69,15 +69,21 @@ command :status do |c|
     @grouped = {:toadd=>[],:todel=>[],:tomod=>[], :unchg=>[]}
     def gmerge(ret, type, options)
       if options.grouped then
-        [:toadd, :todel, :tomod, :unchg].each do |kind|
-          ret[kind].each do |item|
-            item = item.to_h
-            item[:pp_type] = type
-            @grouped[kind] << item
-          end
-        end
+        out = @grouped
       else
-        pretty(ret, options)
+        out = {:toadd=>[],:todel=>[],:tomod=>[], :unchg=>[]}
+      end
+
+      [:toadd, :todel, :tomod, :unchg].each do |kind|
+        ret[kind].each do |item|
+          item = item.to_h
+          item[:pp_type] = type
+          out[kind] << item
+        end
+      end
+
+      unless options.grouped then
+        pretty(out, options)
       end
     end
 

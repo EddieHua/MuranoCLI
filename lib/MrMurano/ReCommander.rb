@@ -35,7 +35,14 @@ module Commander
       hooked = MrMurano::Hooked.new(section)
       hooked.check_run_pre_hook
 
-      old_run_active_command
+      begin
+        old_run_active_command
+      rescue MrMurano::ConfigError => err
+        puts err.message
+        exit 1
+      rescue StandardError => err
+        raise
+      end
 
       hooked.check_run_post_hook
     end

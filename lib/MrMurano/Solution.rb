@@ -8,7 +8,7 @@ module MrMurano
   class SolutionBase
     def initialize
       @sid = $cfg['solution.id']
-      raise "No solution!" if @sid.nil?
+      raise MrMurano::ConfigError.new("No solution!") if @sid.nil?
       @uriparts = [:solution, @sid]
       @itemkey = :id
       @project_section = nil

@@ -63,7 +63,7 @@ command :init do |c|
     if not options.force and not $cfg['solution.id'].nil? then
       say "Using Solution ID already set to #{$cfg['solution.id']}"
     else
-      solz = acc.solutions
+      solz = acc.solutions.select{|s| s[:type] == 'dataApi'}
       if solz.count == 1 then
         sol = solz.first
         say "You only have one solution; using #{sol[:domain]}"

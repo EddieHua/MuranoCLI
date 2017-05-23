@@ -30,7 +30,9 @@ module MrMurano
     ##
     # This gets all data about all endpoints
     def list
-      get().map do |item|
+      ret = get()
+      return [] if ret.is_a? Hash and ret.has_key? :error
+      ret.map do |item|
         if item[:content_type].nil? or item[:content_type].empty? then
           item[:content_type] = 'application/json'
         end

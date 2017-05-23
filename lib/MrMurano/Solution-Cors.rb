@@ -13,6 +13,7 @@ module MrMurano
 
     def fetch(id=nil, &block)
       ret = get()
+      return [] if ret.is_a? Hash and ret.has_key? :error
       if ret.kind_of?(Hash) and ret.has_key?(:cors) then
         # XXX cors is a JSON encoded string. That seems weird. keep an eye on this.
         data = JSON.parse(ret[:cors], @json_opts)

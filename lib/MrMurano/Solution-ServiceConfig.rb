@@ -10,7 +10,9 @@ module MrMurano
     end
 
     def list
-      get()[:items]
+      ret = get()
+      return [] if ret.is_a? Hash and ret.has_key? :error
+      ret[:items]
     end
     def fetch(id)
       get('/' + id.to_s)
@@ -85,6 +87,7 @@ module MrMurano
 
     def list
       ret = get()
+      return [] if ret.is_a? Hash and ret.has_key? :error
       ret[:items]
     end
 
