@@ -83,10 +83,12 @@ command :init do |c|
         end
 
         # create doesn't return anything, so we need to go look for it.
-        ret = acc.solutions.select{|i| i[:domain] =~ /#{solname}\./}
-        sid = ret.first[:apiId]
+        ret = acc.solutions.select do |i|
+          i[:type] == 'dataApi' and (i[:name] == solname or i[:domain] =~ /#{solname}\./i)
+        end
+        sid = (ret.first or {})[:apiId]
         if sid.nil? or sid.empty? then
-          acc.error "Solution didn't find an apiId!!!!  #{ret}"
+          acc.error "Solution didn't find an apiId!!!! #{name} -> #{ret}"
           exit 3
         end
         $cfg.set('solution.id', sid, :project)

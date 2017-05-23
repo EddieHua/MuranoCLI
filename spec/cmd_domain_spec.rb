@@ -22,7 +22,7 @@ RSpec.describe 'murano domain', :cmd, :needs_password do
 
   it "show domain" do
     out, err, status = Open3.capture3(capcmd('murano', 'domain'))
-    expect(out.chomp).to eq("#{@project_name}.apps.exosite.io")
+    expect(out.chomp).to eq("#{@project_name.downcase}.apps.exosite.io")
     expect(err).to eq('')
     expect(status.exitstatus).to eq(0)
   end
