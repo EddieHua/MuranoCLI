@@ -34,15 +34,16 @@ running `murano init`.
 Now do stuff, see what changed: `murano status` or `murano diff`.
 Then deploy with `murano syncup`
 
-### To start a brand new project the hard way.
+### To start a brand new project step-by-step
 There are a few steps and pieces to getting a solution with a product up and
 running in Murano. Here is the list.
 
-- Pick a business: `murano business list`
-  If this is the first time you've run `murano` it will ask for your Murano username
-  and password.
-- Set it: `murano config business.id ZZZZZZZZZ`
+- Pick a business: `murano business list`. 
+  - If this is the first time you've run `murano` it will ask for your Murano username and password. 
+  - If you need to change change accounts, `murano config user.name` and `murano password --help`.
+- Choose the desired business id: `murano config business.id ZZZZZZZZZ`
 - Create a product: `murano product create myawesomeproduct --save`
+  - Another option would be to choose an existing product: `murano config product.id XXXXXXXX`
 - Add resource aliases to specs/resources.yaml
 - Sync the product definition up: `murano syncup -V --specs`
 - Create a solution: `murano solution create myawesomesolution --save`
@@ -67,7 +68,11 @@ And then install:
 ```sh
 > gem install MuranoCLI
 ```
-Or
+Or to install a specific version:
+```sh
+> gem install MuranoCLI -v 2.2.4 
+```
+Or to update to the latest:
 ```sh
 > gem update MuranoCLI
 ```
@@ -82,6 +87,24 @@ install as root, you can install gems in the user directory.
 Your `PATH` may need to be updated to find the installed `murano` command.  See the
 [Ruby Gem FAQ](http://guides.rubygems.org/faqs/#user-install).  In short, you need
 to add the output of `ruby -rubygems -e 'puts Gem.user_dir'` to your `PATH`.
+
+#### Working With Different Versions of MuranoCLI
+
+The `murano` command line tool is a Ruby gem and, as such, multiple versions of 
+MuranoCLI can be installed and executed concurrently.
+
+To illustrate working with multiple versions of MuranoCLI, the following code block
+shows how one can make reference to a specific version of the `murano` gem:
+
+```sh
+> gem list MuranoCLI --local
+*** LOCAL GEMS ***
+MuranoCLI (2.2.3, 2.1.0, 2.0.0)
+> murano --version
+murano 2.2.3
+> murano _2.1.0_ --version
+murano 2.1.0
+```
 
 ### Windows Install
 
